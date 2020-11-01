@@ -1,0 +1,6 @@
+version: "3.8"
+services:
+  server:
+    image: server:1.0.0
+    ports:
+      - 5678:5678

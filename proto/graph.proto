@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+service TestService {
+  rpc Unary(GetRequest) returns (TestResponse) {}
+  rpc StreamServer(GetRequest) returns (stream TestResponse) {}
+  rpc StreamClient(stream GetRequest) returns (TestResponse) {}
+  rpc StreamBi(stream GetRequest) returns (stream TestResponse) {}
+}
+
+message TestResponse {
+  string data = 1;
+}
+
+message GetRequest {
+  string name = 1;
+}
