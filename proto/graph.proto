@@ -1,16 +1,58 @@
 syntax = "proto3";
+import "google/protobuf/empty.proto";
 
-service TestService {
-  rpc Unary(GetRequest) returns (TestResponse) {}
-  rpc StreamServer(GetRequest) returns (stream TestResponse) {}
-  rpc StreamClient(stream GetRequest) returns (TestResponse) {}
-  rpc StreamBi(stream GetRequest) returns (stream TestResponse) {}
+service GraphService {
+  rpc getGraphOpLog(google.protobuf.Empty) returns (stream GraphOpLog) {}
+  rpc addNode(AddNodeRequest) returns (google.protobuf.Empty) {}
+  rpc removeNode(RemoveNodeRequest) returns (google.protobuf.Empty) {}
+  rpc addLink(AddLinkRequest) returns (google.protobuf.Empty) {}
+  rpc removeLink(RemoveLinkRequest) returns (google.protobuf.Empty) {}
 }
 
-message TestResponse {
-  string data = 1;
+
+message AddNodeRequest {
+  string id = 1;
 }
 
-message GetRequest {
-  string name = 1;
+message RemoveNodeRequest {
+  string id = 1;
+}
+
+message AddLinkRequest {
+  string from_node_id = 1;
+  string to_node_id = 2;
+}
+
+message RemoveLinkRequest {
+  string from_node_id = 1;
+  string to_node_id = 2;
+}
+
+
+message Node {
+  string id = 1;
+}
+
+message Link {
+  string from_node_id = 1;
+  string to_node_id = 2;
+}
+
+message Graph {
+  repeated Link links = 1;
+  repeated Node nodes = 2;
+}
+
+enum Op {
+  add = 0;
+  remove = 1;
+}
+
+message GraphOpLog {
+  Op op = 1;
+  oneof data {
+     Link link = 3;
+     Node node = 4;
+     Graph graph = 5;
+  }
 }

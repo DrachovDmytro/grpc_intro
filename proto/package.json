@@ -2,7 +2,8 @@
   "name": "proto",
   "version": "1.0.0",
   "scripts": {
-    "generate:proto:ts": "./scripts/build_protobuf.sh"
+    "generate:proto:ts": "./scripts/build_protobuf.sh",
+    "postinstall": "npm run generate:proto:ts"
   },
   "dependencies": {
     "grpc-tools": "^1.9.1",
