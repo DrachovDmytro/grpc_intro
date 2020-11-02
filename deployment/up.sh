@@ -12,6 +12,7 @@ pushd "$PROJECT_ROOT/deployment"
   docker-compose up -d --scale client=2
   sleep 5
   docker-compose up -d --scale client=3
-  sleep 5
+  sleep 10
   kill $LOGS_PID
+  docker-compose down
 popd
