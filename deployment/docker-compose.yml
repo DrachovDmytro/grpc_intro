@@ -1,7 +1,0 @@
-version: "3.8"
-services:
-  server:
-    image: server:1.0.0
-  client:
-    image: client:1.0.0
-    env_file: .env.client

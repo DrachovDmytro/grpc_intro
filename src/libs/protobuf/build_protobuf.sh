@@ -1,5 +1,8 @@
-PROTO_DEST="./proto_gen"
-PROTO_SRC_DIR="./"
+MY_PATH="`dirname \"$0\"`"
+MY_PATH="`( cd \"$MY_PATH\" && pwd )`"
+echo "$MY_PATH"
+PROTO_DEST="${MY_PATH}/proto_gen"
+PROTO_SRC_DIR="${MY_PATH}/"
 
 mkdir -p ${PROTO_DEST}
 

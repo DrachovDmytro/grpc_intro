@@ -3,8 +3,10 @@ import "google/protobuf/empty.proto";
 
 service GraphService {
   rpc getGraphOpLog(google.protobuf.Empty) returns (stream GraphOpLog) {}
+
   rpc addNode(AddNodeRequest) returns (google.protobuf.Empty) {}
   rpc removeNode(RemoveNodeRequest) returns (google.protobuf.Empty) {}
+
   rpc addLink(AddLinkRequest) returns (google.protobuf.Empty) {}
   rpc removeLink(RemoveLinkRequest) returns (google.protobuf.Empty) {}
 }

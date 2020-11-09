@@ -1,23 +1,11 @@
 # Protobuf First Steps
 
 # Prerequisites
-- Docker
-- docker-compose
+- Node.JS(v14.15.0)
+- npm (v6.14.8)
 
 # Run
 ```
-./deployment/up.sh
+
+./up.sh
 ```
-
-# Structure
-## client
-Client code, receives update about graph and update
-
-## server
-Server code, handle requests to update graph, send streams to clients about graph updates.
-
-## proto
-Sharable proto files
-
-## deployment
-Docker files, docker-compose, scripts 
